@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos | Servicio Técnico MS</title>
+  <meta name="description" content="Productos y repuestos disponibles en Servicio Técnico MS. Calidad garantizada y atención profesional.">
+  <meta name="author" content="Servicio Técnico MS">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    html {scroll-behavior: smooth;}
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      color: #111;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00d1b2, #009c8e);
+      text-align: center;
+      padding: 40px 20px;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      width: 120px;
+      margin-bottom: 10px;
+      border-radius: 15px;
+      background: #fff;
+      padding: 8px;
+    }
+
+    nav {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    nav a {
+      color: #111;
+      padding: 12px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    nav a:hover, nav a.active {
+      color: #00d1b2;
+      border-bottom: 3px solid #00d1b2;
+    }
+
+    section {
+      padding: 45px 20px;
+      max-width: 1100px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease;
+    }
+    section.visible {opacity: 1; transform: translateY(0);}
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00bfa6;
+      font-size: 1.8rem;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .search-bar input {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px 15px;
+      border: 2px solid #00bfa6;
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+      transition: box-shadow 0.3s;
+    }
+    .search-bar input:focus {
+      box-shadow: 0 0 8px rgba(0,191,166,0.4);
+    }
+
+    /* Productos */
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .producto {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .producto:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+    }
+
+    .producto h3 {margin: 12px 0 6px; color: #111;}
+    .producto p {font-size: 0.95rem; color: #555;}
+    .precio {color: #00d1b2; font-weight: bold; margin-top: 8px; font-size: 1.1rem;}
+
+    .btn-whatsapp {
+      display: inline-block;
+      margin-top: 12px;
+      background-color: #25D366;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+
+    footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .whatsapp-btn, .instagram-btn, .call-btn {
+      position: fixed;
+      right: 20px;
+      border-radius: 50%;
+      font-size: 24px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: transform 0.2s ease;
+      z-index: 100;
+    }
+
+    .whatsapp-btn {bottom: 100px; background-color: #25D366; padding: 15px;}
+    .instagram-btn {bottom: 40px; background-color: #E4405F; padding: 15px;}
+    .call-btn {bottom: 160px; background-color: #00bfa6; padding: 15px;}
+    .whatsapp-btn:hover, .instagram-btn:hover, .call-btn:hover {transform: scale(1.1);}
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="logo.jpeg" alt="Logo Maestro Splinter">
+    <h1>Productos</h1>
+    <p>Productos y accesorios con garantía y altisima calidad</p>
+  </header>
+
+  <nav>
+    <a href="index.html" class="active"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+  </nav>
+
+  <section id="productos">
+    <h2>Catálogo de productos</h2>
+
+    <div class="search-bar">
+      <input type="text" id="buscar" placeholder="Buscar producto...">
+    </div>
+
+    <div class="productos" id="listaProductos">
+      <div class="producto">
+        <img src="img/juegos-ps2.jpg" alt="Juegos para PS2">
+        <h3>Juegos para PS2</h3>
+        <p>Juegos para Ps2, para pendrive.</p>
+        <div class="precio">$3.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Juegos para Ps2, para pendrive')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+      <div class="producto">
+        <img src="img/Cargador-Motorola-Turbo-Power-25w.jpg" alt="Cargador Motorola Turbo Power 125w Usb C En Caja Negro">
+        <h3>Cargador Motorola Turbo Power 125w Usb C En Caja Negro</h3>
+        <p>Carga rápida con cable USB-C incluido.</p>
+        <div class="precio">$80.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Cargador Motorola Turbo Power 125w Usb C En Caja Negro')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+      <div class="producto">
+        <img src="img/Funda-silicona-iPhone-11.jpg" alt="Funda silicona iPhone 11">
+        <h3>Funda silicona iPhone 11</h3>
+        <p>Protección premium en varios colores.</p>
+        <div class="precio">$8.500</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Funda silicona iPhone 11')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+      <div class="producto">
+        <img src="img/auricular-samsung.jpg" alt="auricular manos libre marca samsung">
+        <h3>Auricular Samsung Manos Libres</h3>
+        <p>auricular manos libre marca samsung.</p>
+        <div class="precio">$6.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Auricular manos libre marca samsung')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+      <div class="producto">
+        <img src="img/Auricular-A6s.jpg" alt="Auriculares A6s Pro Bluetooth 5.1, Color Blanco y Negro">
+        <h3>Auriculares A6s Blanco/Negro</h3>
+        <p>Auriculares A6s Pro Bluetooth 5.1, Color Blanco y Negro.</p>
+        <div class="precio">$12.500</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Auriculares A6s Blanco/Negro')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+       <div class="producto">
+        <img src="img/desbloqueo-net-gob.jpg" alt="Desbloque de Netbook del gobierno">
+        <h3>Desbloque de Netbook del gobierno</h3>
+        <p>Desbloqueo definitivo para todas las netbook del gobierno.</p>
+        <div class="precio">$40.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Desbloqueo definitivo para todas las netbook del gobierno')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+       <div class="producto">
+        <img src="img/Ringke-Cable-Carga-Rápida.jpg" alt="Ringke Cable Carga Rápida Usb 3.2 Gen 2x2 Usb-c Reforzado">
+        <h3>Cable USB-C reforzado</h3>
+        <p>1 metro de largo, compatible con carga rápida.</p>
+        <div class="precio">$25.200</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Ringke Cable Carga Rápida Usb 3.2 Gen 2x2 Usb-c Reforzado')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+        <div class="producto">
+        <img src="img/Liberacion-ps2.jpg" alt="Liberacion/Flasheo de PS2">
+        <h3>Liberacion/Flasheo PS2</h3>
+        <p>Liberacion/Flasheo con 3 juegos gratis a eleccion.</p>
+        <div class="precio">$20.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Liberacion/Flasheo de PS2')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+        <div class="producto">
+        <img src="img/Flasheo-ps3.jpg" alt="Liberacion/Flasheo de PS3">
+        <h3>Liberacion/Flasheo PS3</h3>
+        <p>Liberacion/Flasheo con 4 tiendas con miles de juegos gratis.</p>
+        <div class="precio">$30.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Liberacion/Flasheo de PS3')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+
+      <div class="producto">
+        <img src="img/Mouse-Inalámbrico-logitech.jpg" alt="Mouse Inalámbrico M280 Logitech Color Negro">
+        <h3>Mouse inalámbrico Logitech</h3>
+        <p>Diseño ergonómico, batería de larga duración.</p>
+        <div class="precio">$12.000</div>
+        <a href="#" class="btn-whatsapp" onclick="enviarWhatsApp('Mouse Inalámbrico M280 Logitech Color Negro')"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <a class="call-btn" href="tel:+5491138721212" aria-label="Llamar a Servicio Técnico MS"><i class="fas fa-phone"></i></a>
+  <a class="whatsapp-btn" href="https://wa.me/5492246509826" target="_blank" aria-label="WhatsApp Servicio Técnico MS"><i class="fab fa-whatsapp"></i></a>
+  <a class="instagram-btn" href="https://www.instagram.com/servicio_tecnico.ms" target="_blank" aria-label="Instagram Servicio Técnico MS"><i class="fab fa-instagram"></i></a>
+
+  <footer>
+    <p>&copy; 2025 Maestro Splinter - Servicio Técnico MS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const showOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add("visible");
+      });
+    };
+    window.addEventListener("scroll", showOnScroll);
+    showOnScroll();
+
+    const buscar = document.getElementById("buscar");
+    const productos = document.querySelectorAll(".producto");
+    buscar.addEventListener("input", () => {
+      const texto = buscar.value.toLowerCase();
+      productos.forEach(prod => {
+        const nombre = prod.querySelector("h3").textContent.toLowerCase();
+        const desc = prod.querySelector("p").textContent.toLowerCase();
+        prod.style.display = nombre.includes(texto) || desc.includes(texto) ? "block" : "none";
+      });
+    });
+
+    function enviarWhatsApp(producto) {
+      const numero = "5492246509826"; 
+      const mensaje = `Hola! Estoy interesado/a en el producto ${producto}`;
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>
